@@ -1,0 +1,17 @@
+@media (min-width: 1200px) {
+    .container {
+      width: 900px;
+    }
+  }
+  .jumbotron
+{   
+padding-top: 2px;
+padding-bottom:0px;
+background-size: cover;
+background-color: lightcoral;
+height:100px;
+ }
+ .container {
+  width: 870px;
+  
+}

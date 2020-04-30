@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "PecuniaBankLoanApp": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "PecuniaBankLoanApp"
+    }
+  },
+  "defaultProject": "PecuniaBankLoanApp",
+  "cli": {
+    "analytics": "df4d33b6-1521-4a08-842a-27a73e331827"
+  }
 }

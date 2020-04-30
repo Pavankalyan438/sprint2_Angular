@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+    <table class="table table-striped" *ngIf="loanrejects && loanrejects.length > 0  else elseBlock">
+        <thead>
+        <tr>
+            <th>ACCOUNT ID</th>
+            <th>LOAN AMOUNT</th>
+            <th>LOAN TENURE</th>
+            <th>CREDIT SCORE</th>
+            <th>LOAN ROI</th>
+            <th>LOAN STATUS</th>
+            <th>LOAN TYPE</th>
+            <th>LOAN EMI</th>
+            <th>LOAN ID</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of loanrejects">
+                <td> {{e.accountId}} </td>
+                <td> {{e.loanAmount}} </td>
+                <td> {{e.loanTenure}} </td>
+                <td>{{e.creditScore}}</td>
+                <td> {{e.loanRoi}} </td>
+                <td> {{e.loanStatus}} </td>
+                <td> {{e.loanType}} </td>
+                <td> {{e.emi}} </td>
+                <td> {{e.loanId}} </td>
+                
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no rejected loans to display! </h4>
+    </ng-template>
+
+</div>
