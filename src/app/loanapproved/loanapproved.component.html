@@ -6,8 +6,8 @@
     <table class="table table-striped" *ngIf="loandisbursals && loandisbursals.length > 0  else elseBlock">
         <thead>
         <tr>
-            <th>ACCOUNT ID</th>
-            <th>LOAN AMOUNT</th>
+            <th>CUSTOMER ID</th>
+            <th>BANK BALANCE</th>
             <th>LOAN TENURE</th>
             <th>CREDIT SCORE</th>
             <th>LOAN ROI</th>
@@ -21,13 +21,13 @@
         <tbody>
             <tr *ngFor="let e of loandisbursals">
                 <td> {{e.accountId}} </td>
-                <td> {{e.loanAmount}} </td>
+                <td> Rs.{{e.loanAmount}} </td>
                 <td> {{e.loanTenure}} </td>
                 <td>{{e.creditScore}}</td>
                 <td> {{e.loanRoi}} </td>
                 <td> {{e.loanStatus}} </td>
                 <td> {{e.loanType}} </td>
-                <td> {{e.emi}} </td>
+                <td> Rs.{{e.emi}} </td>
                 <td> {{e.loanId}} </td>
                 <td>
                     <button type="button" class="btn btn-large btn-block btn-primary" (click)=updateBal(e)>Update Balance</button>
@@ -37,7 +37,7 @@
         </tbody>
     </table>
     <ng-template #elseBlock>
-        <h4 align="center"> There are no approved loans to display! </h4>
+        <h4> There are no approved loans to display! </h4>
     </ng-template>
 
 </div>

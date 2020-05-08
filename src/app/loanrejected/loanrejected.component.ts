@@ -16,15 +16,8 @@ export class LoanrejectedComponent implements OnInit {
   }
   getAllRejected() {
     //adding Books or getting data of books
-   if(!this.myservice.getAllRejected())
-   {
-     this.myservice.getRejectsInitially().subscribe((requestsFetched)=>{
-     this.loanrejects = requestsFetched;
-     this.myservice.setRejectsInitially(this.loanrejects);
-     },(error)=>console.log(error));
-   }
-   {
-     this.loanrejects=this.myservice.getAllRejected();
-   }
-  }
+    this.myservice.getRejectsInitially().subscribe((data)=>{
+      this.loanrejects = data
+  })
+}
 }

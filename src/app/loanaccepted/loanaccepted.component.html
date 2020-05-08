@@ -1,7 +1,4 @@
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+
 <div class="container">
     <table class="table table-striped" *ngIf="loanrequests && loanrequests.length > 0  else elseBlock">
         <thead>
@@ -32,7 +29,7 @@
         </tbody>
     </table>
     <ng-template #elseBlock>
-        <h4 align="center"> There are no loans applied to display! </h4>
+        <h4> There are no loans applied to display! </h4>
     </ng-template>
 
 </div>

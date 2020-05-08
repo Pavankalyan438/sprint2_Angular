@@ -10,7 +10,6 @@ import { MyServiceService } from './my-service.service';
 import { LoanacceptedComponent } from './loanaccepted/loanaccepted.component';
 import { LoanapprovedComponent } from './loanapproved/loanapproved.component';
 import { LoanrejectedComponent } from './loanrejected/loanrejected.component';
-import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { FaqComponent } from './faq/faq.component';
     LoanacceptedComponent,
     LoanapprovedComponent,
     LoanrejectedComponent,
-    FaqComponent
+    
   ],
   imports: [
     BrowserModule,

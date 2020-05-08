@@ -1,17 +1,22 @@
-@media (min-width: 1200px) {
-    .container {
-      width: 900px;
-    }
-  }
-  .jumbotron
+.jumbotron
 {   
-padding-top: 2px;
+padding-top: 18px;
 padding-bottom:0px;
-background-size: cover;
-background-color: lightcoral;
+padding-left: 20px;
+padding-right: 10px;
+background-color:crimson;
+font-weight: 500;
+font-style: oblique;
 height:100px;
  }
  .container {
   width: 870px;
   
+}
+.container h1{
+  color: antiquewhite;
+  text-align: center;
+}
+.navbar {
+  color: black;
 }
