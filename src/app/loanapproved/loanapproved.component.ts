@@ -26,8 +26,6 @@ export class LoanapprovedComponent implements OnInit {
    
     this.myservice.updateBal(updatebal).subscribe(data => {
       this.message=data})
-      
-      alert(this.message)
     
   }
 
