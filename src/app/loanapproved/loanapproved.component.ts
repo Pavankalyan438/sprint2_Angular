@@ -23,10 +23,12 @@ export class LoanapprovedComponent implements OnInit {
   
   })}
   updateBal(updatebal: LoanDisbursal) {
-   
+   if(updatebal.accountId=="SERVER DOWN"){
+     alert("Cannot perform operstions when main server is down!!")
+   }else{
     this.myservice.updateBal(updatebal).subscribe(data => {
       this.message=data})
-    
+   }
   }
 
 }

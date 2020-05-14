@@ -1,7 +1,7 @@
 
 <div class="container">
-    <table class="table table-striped" *ngIf="loanrequests && loanrequests.length > 0  else elseBlock">
-        <thead>
+    <table class="table table-bordered" *ngIf="loanrequests && loanrequests.length > 0  else elseBlock">
+        <thead class="bg-primary">
         <tr>
             <th>ACCOUNT ID</th>
             <th>LOAN AMOUNT</th>
@@ -23,8 +23,6 @@
                 <td> {{e.loanStatus}} </td>
                 <td> {{e.loanType}} </td>
                 <td> {{e.loanId}} </td>
-                
-                <td>
             </tr>
         </tbody>
     </table>

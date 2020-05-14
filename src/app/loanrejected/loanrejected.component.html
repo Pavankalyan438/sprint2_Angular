@@ -5,9 +5,9 @@
 </head>
 
 <div class="container">
-    <table class="table table-striped" *ngIf="loanrejects && loanrejects.length > 0  else elseBlock">
+    <table class="table table-bordered" *ngIf="loanrejects && loanrejects.length > 0  else elseBlock">
 
-        <thead>
+        <thead class="bg-primary">
             <tr>
                 <th>CUSTOMER ID</th>
                 <th>CREDIT SCORE</th>
@@ -23,7 +23,7 @@
                 <td> {{e.loanStatus}} </td>
                 <td> {{e.loanType}} </td>
                 <td> {{e.loanId}} </td>
-                <td>
+                
             </tr>
         </tbody>
     </table>

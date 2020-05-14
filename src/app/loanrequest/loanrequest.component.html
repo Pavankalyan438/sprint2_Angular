@@ -85,13 +85,13 @@
                     <label for="loanType">Loan Type :</label>
                     <select type="text" [(ngModel)]="req.loanType" placeholder="enter loan type" name="loanType"
                         class="form-control" id="loanType" required>
-                        <option *ngFor="let loan of loans" value="loan">{{loan}}</option>
+                        <option *ngFor="let loan of loans" [ngValue]="loan">{{loan}}</option>
                     </select>
                 </div>
                 <br>
-                <button class="btn btn-success" [disabled]="loanform.invalid"><i class="fa fa-check"></i>Request
+                <button class="btn btn-success float-right" [disabled]="loanform.invalid"><i class="fa fa-check"></i>Request
                     Loan</button>
-                <br>
+                <br><br>
 
             </form>
 
