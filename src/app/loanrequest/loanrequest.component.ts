@@ -15,11 +15,13 @@ export class LoanrequestComponent implements OnInit {
   constructor(private myservice: MyServiceService, private router: Router) { }
  loans=['Study Loan','Car Loan','House Loan']
   public loanRequest(): any {
+   
 
     this.myservice.loanRequest(this.req).subscribe(data => {
       this.message = data
       this.router.navigate(['/loanreq']);
       alert(this.message);
+    
     });
   }
 

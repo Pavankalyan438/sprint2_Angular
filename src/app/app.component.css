@@ -4,19 +4,13 @@ padding-top: 18px;
 padding-bottom:0px;
 padding-left: 20px;
 padding-right: 10px;
+color: antiquewhite;
 background-color:crimson;
-font-weight: 500;
-font-style: oblique;
+font-size: 3em;
 height:100px;
  }
- .container {
-  width: 870px;
-  
-}
-.container h1{
-  color: antiquewhite;
-  text-align: center;
-}
+ 
+
 nav-link{
   color: white;
 }

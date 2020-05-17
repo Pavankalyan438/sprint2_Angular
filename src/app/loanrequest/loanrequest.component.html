@@ -1,103 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Loan request page</title>
+</head>
+<br>
+
 <body>
+    <div class="row">
+        <div class="col-sm-2"><img src="../../assets/images/loan.jpg" width="250" height="350" alt="fg"></div>
 
-    <div class="container">
-        <div class="container s">
-
-            <form (ngSubmit)="loanform.form.valid && loanRequest();loanform.reset()" #loanform="ngForm">
-
-
-                <br>
-                <div class="form-group">
-                    <label for="accountId">Customer ID :</label>
-                    <input type="text" pattern=[0-9]* minlength="12" maxlength="12" [(ngModel)]="req.accountId"
-                        placeholder="enter accountid" name="accountId" class="form-control" id="accountId"
-                        #accountId="ngModel" required>
+        <div class=" col-sm-1"></div>
+        <div class=" col-sm-9">
+            <div class="container s">
 
 
-                    <div *ngIf="accountId.errors  && (accountId.dirty || accountId.touched)" class="alert alert-danger">
-                        <div *ngIf="accountId.errors.required">Account id required</div>
-                        <div *ngIf="accountId.errors.minlength">Id should be 12 digits</div>
+                <form (ngSubmit)="loanform.form.valid && loanRequest();loanform.reset()" #loanform="ngForm">
 
-                        <div [hidden]="!accountId.errors.pattern">
-                            & No charecters are allowed
+
+                    <br>
+                    <div class="form-group">
+                        <label for="accountId">Customer ID :</label>
+                        <input type="text" pattern=[0-9]* minlength="12" maxlength="12" [(ngModel)]="req.accountId"
+                            placeholder="enter accountid" name="accountId" class="form-control" id="accountId"
+                            #accountId="ngModel" required>
+
+
+                        <div *ngIf="accountId.errors  && (accountId.dirty || accountId.touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="accountId.errors.required">Customer id cannot be empty</div>
+                            <div *ngIf="accountId.errors.minlength">Id should be 12 digits</div>
+
+                            <div [hidden]="!accountId.errors.pattern">
+                                & No charecters are allowed
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="loanAmount">Loan Amount :</label>
+                        <input [(ngModel)]="req.loanAmount" placeholder="enter loanamount" name="loanAmount"
+                            class="form-control" id="loanAmount" #loanAmount="ngModel"
+                            pattern="^$|^([1-9][0-9]{3,7}|100000000)?" min=1000 required>
+                        <div *ngIf="loanAmount.errors && (loanAmount.dirty || loanAmount.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="loanAmount.errors.required">loan Amount cannot be empty</div>
+                            <div [hidden]="loanTenure.errors.pattern">
+                                Loan Amount should be between 1000 and 10,00,00,000
+                            </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="loanTenure">Loan Tenure :</label>
+                        <input type="number" [(ngModel)]="req.loanTenure"
+                            pattern="^$|^([1][2-9]|[2-9][0-9]|[1][0-9][0-9]|[2][0-3][0-9]|[2][4][0])?"
+                            placeholder="enter tenure" name="loanTenure" class="form-control" id="loanTenure"
+                            #loanTenure="ngModel" required>
+                        <div *ngIf="loanTenure.errors && (loanTenure.dirty || loanTenure.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="loanTenure.errors.required">Loan Tenure cannot be empty</div>
+                            <div [hidden]="!loanTenure.errors.pattern">
+                                Loan Tenure should be between 12 and 240
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="creditScore">Credit Score :</label>
+                        <input type="number" [(ngModel)]="req.creditScore" placeholder="enter credit score"
+                            name="creditScore" class="form-control" id="creditScore" pattern="^$|^([1-9][0-9][0-9])?"
+                            #creditScore="ngModel" required>
+                        <div *ngIf="creditScore.errors && (creditScore.dirty || creditScore.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="creditScore.errors.required">Credit Score cannot be empty</div>
+                            <div [hidden]="!creditScore.errors.pattern">
+                                Loan Tenure should be between 100 and 999
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanRoi">Loan ROI :</label>
+                        <input required type="number" [(ngModel)]="req.loanRoi" placeholder="enter rate of interest"
+                            name="loanRoi" class="form-control" id="loanRoi" pattern="^$|^([4-9]|[1][0-5])?"
+                            #loanRoi="ngModel">
+                        <div *ngIf="loanRoi.errors && (loanRoi.dirty || loanRoi.touched)" class="alert alert-danger">
+                            <div *ngIf="loanRoi.errors.required">loanRoi cannot be empty</div>
+                            <div [hidden]="!loanRoi.errors.pattern">
+                                ROI should be between 4 and 15
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanStatus">Loan Status :</label>
+                        <input type="text" value="Pending" readonly name="loanStatus" class="form-control"
+                            id="loanStatus">
+                        <small id="loanStatus" class="form-text text-muted">Loan status will be pending during loan
+                            application</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="loanType">Loan Type :</label>
+                        <select type="text" [(ngModel)]="req.loanType" placeholder="enter loan type" name="loanType"
+                            class="form-control" id="loanType" required>
+                            <option *ngFor="let loan of loans" [ngValue]="loan">{{loan}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="loanform.invalid">
+                        <small class="alert-danger float-right">[*note: all fields are required]</small>
+                    </div>
+                    <br>
 
-                </div>
-                <div class="form-group">
-                    <label for="loanAmount">Loan Amount :</label>
-                    <input [(ngModel)]="req.loanAmount" placeholder="enter loanamount" name="loanAmount"
-                        class="form-control" id="loanAmount" #loanAmount="ngModel"
-                        pattern="^$|^([1-9][0-9]{3,7}|100000000)?" min=1000 required>
-                    <div *ngIf="loanAmount.errors && (loanAmount.dirty || loanAmount.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="loanAmount.errors.required">loan Amount is required</div>
-                        <div [hidden]="loanTenure.errors.pattern">
-                            Loan Amount should be between 1000 and 10,00,00,000
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="loanTenure">Loan Tenure :</label>
-                    <input [(ngModel)]="req.loanTenure"
-                        pattern="^$|^([1][2-9]|[2-9][0-9]|[1][0-9][0-9]|[2][0-3][0-9]|[2][4][0])?"
-                        placeholder="enter tenure" name="loanTenure" class="form-control" id="loanTenure"
-                        #loanTenure="ngModel" required>
-                    <div *ngIf="loanTenure.errors && (loanTenure.dirty || loanTenure.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="loanTenure.errors.required">Loan Tenure is required</div>
-                        <div [hidden]="!loanTenure.errors.pattern">
-                            Loan Tenure should be between 12 and 240
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="creditScore">Credit Score :</label>
-                    <input [(ngModel)]="req.creditScore" placeholder="enter credit score" name="creditScore"
-                        class="form-control" id="creditScore" pattern="^$|^([1-9][0-9][0-9])?" #creditScore="ngModel"
-                        required>
-                    <div *ngIf="creditScore.errors && (creditScore.dirty || creditScore.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="creditScore.errors.required">Credit Score is required.</div>
-                        <div [hidden]="!creditScore.errors.pattern">
-                            Loan Tenure should be between 100 and 999
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="loanRoi">Loan ROI :</label>
-                    <input required type="number" [(ngModel)]="req.loanRoi" placeholder="enter rate of interest"
-                        name="loanRoi" class="form-control" id="loanRoi" pattern="^$|^([4-9]|[1][0-5])?"
-                        #loanRoi="ngModel">
-                    <div *ngIf="loanRoi.errors && (loanRoi.dirty || loanRoi.touched)">
-                        <div class="alert alert-danger" [hidden]="!loanRoi.errors.pattern">
-                            ROI should be between 4 and 15
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="loanStatus">Loan Status :</label>
-                    <input type="text" value="Pending" readonly name="loanStatus" class="form-control" id="loanStatus">
-                    <small id="loanStatus" class="form-text text-muted">Loan status will be pending during loan
-                        application</small>
-                </div>
-                <div class="form-group">
-                    <label for="loanType">Loan Type :</label>
-                    <select type="text" [(ngModel)]="req.loanType" placeholder="enter loan type" name="loanType"
-                        class="form-control" id="loanType" required>
-                        <option *ngFor="let loan of loans" [ngValue]="loan">{{loan}}</option>
-                    </select>
-                </div>
-                <br>
-                <button class="btn btn-success float-right" [disabled]="loanform.invalid"><i class="fa fa-check"></i>Request
-                    Loan</button>
-                <br><br>
+                    <button class="btn btn-warning float-right" [disabled]="loanform.invalid"><i
+                            class="fa fa-check"></i>Request
+                        Loan</button>
+                    <br><br>
 
-            </form>
+                </form>
 
+            </div>
 
         </div>
 
-    </div>
 
+
+    </div>
 </body>
+
+</html>
